@@ -1,5 +1,5 @@
 # immersive-focus-web
-A calming web-based focus environment with ambient videos and music
+A calming ambient environment for deep work with ambient videos and music, featuring drag-to-change navigation across different camera angles.
 
 Interface:
 <img width="3835" height="1880" alt="image" src="https://github.com/user-attachments/assets/3f3e9d01-d4b5-4956-9ba6-93f922db2eed" />
