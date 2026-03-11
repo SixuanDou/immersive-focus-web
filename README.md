@@ -1,5 +1,6 @@
 # immersive-focus-web
 A calming web-based focus environment with ambient videos and music
+
 Interface:
 <img width="3835" height="1880" alt="image" src="https://github.com/user-attachments/assets/3f3e9d01-d4b5-4956-9ba6-93f922db2eed" />
 <img width="3835" height="1880" alt="image" src="https://github.com/user-attachments/assets/66090a62-552b-4de4-8bdf-dc80357b0a8b" />
