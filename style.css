@@ -270,6 +270,11 @@ body {
     #environment-video {
         object-fit: contain;
     }
+
+    #drag-overlay {
+        touch-action: pan-y pinch-zoom;
+    }
+
     .controls-area {
         position: fixed;
         bottom: 6rem;
@@ -355,6 +360,10 @@ body {
         object-fit: contain;
     }
 
+    #drag-overlay {
+        touch-action: pan-y pinch-zoom;
+    }
+
     .controls-area {
         bottom: 5.5rem;
     }
@@ -409,6 +418,10 @@ body {
     
     #environment-video {
         object-fit: contain;
+    }
+
+    #drag-overlay {
+        touch-action: pan-y pinch-zoom;
     }
 
     .controls-area {
