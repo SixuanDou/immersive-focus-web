@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #0a1a2f 0%, #1a3b5a 100%);
+    background: #46629F;
     color: #ffffff;
     min-height: 100vh;
     overflow-x: hidden;
@@ -27,7 +27,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background: linear-gradient(135deg, #0a1a2f 0%, #1a3b5a 100%);
+    background: #46629F;
 }
 
 #environment-video {
@@ -269,7 +269,7 @@ body {
     
     .controls-area {
         position: fixed;
-        bottom: 4.5rem;
+        bottom: 6rem;
         left: 0;
         right: 0;
         display: flex;
@@ -349,7 +349,7 @@ body {
 
 @media (max-width: 480px) {
     .controls-area {
-        bottom: 4rem;
+        bottom: 5.5rem;
     }
     .music-player {
         min-width: 180px;
@@ -402,7 +402,7 @@ body {
     
     .controls-area {
         position: fixed;
-        bottom: 4rem;
+        bottom: 5rem;
         left: 0;
         right: 0;
         display: flex;
@@ -425,7 +425,7 @@ body {
     
     .music-player {
         position: fixed;
-        bottom: 2.2rem;
+        bottom: 1.8rem;
         left: 50%;
         transform: translateX(-50%);
         min-width: 160px;
