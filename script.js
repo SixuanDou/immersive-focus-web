@@ -43,9 +43,16 @@ function loadVideo(angle) {
 
 loadVideo('perspective');
 
+angleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        loadVideo(btn.dataset.angle);
+    });
+});
+
 // Mouse events for desktop
 dragOverlay.addEventListener('mousedown', (e) => {
-    if (e.target.closest('.angle-btn, .music-btn, .play-pause, #prev-track, #next-track')) {
+    const isButton = e.target.closest('.angle-selector, .music-player, .footer, .angle-btn, .music-btn, .play-pause, #prev-track, #next-track');
+    if (isButton) {
         return;
     }
     
@@ -90,7 +97,8 @@ dragOverlay.addEventListener('mouseleave', () => {
 
 // Touch events for mobile
 dragOverlay.addEventListener('touchstart', (e) => {
-    if (e.target.closest('.angle-btn, .music-btn, .play-pause, #prev-track, #next-track')) {
+    const isButton = e.target.closest('.angle-selector, .music-player, .footer, .angle-btn, .music-btn, .play-pause, #prev-track, #next-track');
+    if (isButton) {
         return;
     }
     
@@ -136,6 +144,7 @@ dragOverlay.addEventListener('touchcancel', () => {
     dragOverlay.style.cursor = 'grab';
 });
 
+// Audio player
 const audioPlayer = new Audio();
 let currentTrackIndex = 0;
 let isPlaying = true;

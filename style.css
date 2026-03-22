@@ -1,3 +1,16 @@
+.angle-selector, .music-player, .footer {
+    position: relative;
+    z-index: 20;
+    pointer-events: auto;
+}
+
+.angle-btn, .music-btn, .play-pause, #prev-track, #next-track {
+    position: relative;
+    z-index: 25;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
 * {
     margin: 0;
     padding: 0;
