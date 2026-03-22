@@ -21,7 +21,8 @@ let currentAngle = 'perspective';
 let isDragging = false;
 let startX;
 let touchStartX;
-const dragThreshold = 30;
+let dragThreshold = 30;
+let didDrag = false;
 
 function loadVideo(angle) {
     if (videoSources[angle]) {
@@ -44,6 +45,11 @@ loadVideo('perspective');
 
 // Mouse events for desktop
 dragOverlay.addEventListener('mousedown', (e) => {
+    if (e.target.closest('.angle-btn, .music-btn, .play-pause, #prev-track, #next-track')) {
+        return;
+    }
+    
+    didDrag = false;
     isDragging = true;
     startX = e.clientX;
     dragOverlay.style.cursor = 'grabbing';
@@ -56,6 +62,7 @@ document.addEventListener('mousemove', (e) => {
     const deltaX = e.clientX - startX;
     
     if (Math.abs(deltaX) > dragThreshold) {
+        didDrag = true;
         const angleOrder = ['perspective', 'front', 'side', 'top'];
         const currentIndex = angleOrder.indexOf(currentAngle);
         
@@ -83,6 +90,11 @@ dragOverlay.addEventListener('mouseleave', () => {
 
 // Touch events for mobile
 dragOverlay.addEventListener('touchstart', (e) => {
+    if (e.target.closest('.angle-btn, .music-btn, .play-pause, #prev-track, #next-track')) {
+        return;
+    }
+    
+    didDrag = false;
     isDragging = true;
     touchStartX = e.touches[0].clientX;
     e.preventDefault();
@@ -94,6 +106,7 @@ document.addEventListener('touchmove', (e) => {
     const deltaX = e.touches[0].clientX - touchStartX;
     
     if (Math.abs(deltaX) > dragThreshold) {
+        didDrag = true;
         const angleOrder = ['perspective', 'front', 'side', 'top'];
         const currentIndex = angleOrder.indexOf(currentAngle);
         
@@ -109,9 +122,13 @@ document.addEventListener('touchmove', (e) => {
     }
 });
 
-document.addEventListener('touchend', () => {
+document.addEventListener('touchend', (e) => {
     isDragging = false;
     dragOverlay.style.cursor = 'grab';
+    
+    if (didDrag) {
+        e.preventDefault();
+    }
 });
 
 dragOverlay.addEventListener('touchcancel', () => {
