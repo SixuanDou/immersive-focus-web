@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #46629F;
+    background: linear-gradient(135deg, #0a1a2f 0%, #1a3b5a 100%);
     color: #ffffff;
     min-height: 100vh;
     overflow-x: hidden;
@@ -27,13 +27,13 @@ body {
     width: 100%;
     height: 100%;
     z-index: 0;
-    background: #46629F;
+    background: linear-gradient(135deg, #0a1a2f 0%, #1a3b5a 100%);
 }
 
 #environment-video {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     filter: brightness(0.9) saturate(1.1);
 }
 
@@ -267,6 +267,9 @@ body {
         font-size: 0.8rem; 
     }
     
+    #environment-video {
+        object-fit: contain;
+    }
     .controls-area {
         position: fixed;
         bottom: 6rem;
@@ -295,7 +298,7 @@ body {
     
     .music-player { 
         position: fixed;
-        bottom: 2.5rem;
+        bottom: 1.5rem;
         left: 50%;
         right: auto;
         transform: translateX(-50%);
@@ -338,7 +341,7 @@ body {
     
     .footer { 
         position: fixed;
-        bottom: 0.8rem;
+        bottom: 0.5rem;
         left: 50%;
         transform: translateX(-50%);
         font-size: 0.7rem;
@@ -348,13 +351,17 @@ body {
 }
 
 @media (max-width: 480px) {
+    #environment-video {
+        object-fit: contain;
+    }
+
     .controls-area {
         bottom: 5.5rem;
     }
     .music-player {
         min-width: 180px;
         max-width: 85%;
-        bottom: 2.2rem;
+        bottom: 1.2rem;
         padding: 0.4rem 0.6rem;
     }
     .music-info {
@@ -387,7 +394,7 @@ body {
         flex-shrink: 0;
     }
     .footer {
-        bottom: 0.6rem;
+        bottom: 0.4rem;
         font-size: 0.65rem;
     }
 }
@@ -400,6 +407,10 @@ body {
         font-size: 0.6rem;
     }
     
+    #environment-video {
+        object-fit: contain;
+    }
+
     .controls-area {
         position: fixed;
         bottom: 5rem;
