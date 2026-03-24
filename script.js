@@ -43,6 +43,7 @@ function loadVideo(angle) {
 
 loadVideo('perspective');
 
+// Button click handlers (these work because buttons are above the overlay)
 angleButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         loadVideo(btn.dataset.angle);
@@ -51,12 +52,6 @@ angleButtons.forEach(btn => {
 
 // Mouse events for desktop
 dragOverlay.addEventListener('mousedown', (e) => {
-    const isButton = e.target.closest('.angle-selector, .music-player, .footer, .angle-btn, .music-btn, .play-pause, #prev-track, #next-track');
-    if (isButton) {
-        return;
-    }
-    
-    didDrag = false;
     isDragging = true;
     startX = e.clientX;
     dragOverlay.style.cursor = 'grabbing';
@@ -69,7 +64,6 @@ document.addEventListener('mousemove', (e) => {
     const deltaX = e.clientX - startX;
     
     if (Math.abs(deltaX) > dragThreshold) {
-        didDrag = true;
         const angleOrder = ['perspective', 'front', 'side', 'top'];
         const currentIndex = angleOrder.indexOf(currentAngle);
         
@@ -82,29 +76,27 @@ document.addEventListener('mousemove', (e) => {
         }
         
         startX = e.clientX;
+        didDrag = true;
     }
 });
 
 document.addEventListener('mouseup', () => {
     isDragging = false;
     dragOverlay.style.cursor = 'grab';
+    didDrag = false;
 });
 
 dragOverlay.addEventListener('mouseleave', () => {
     isDragging = false;
     dragOverlay.style.cursor = 'grab';
+    didDrag = false;
 });
 
-// Touch events for mobile
+// Touch events for mobile - SIMPLIFIED
 dragOverlay.addEventListener('touchstart', (e) => {
-    const isButton = e.target.closest('.angle-selector, .music-player, .footer, .angle-btn, .music-btn, .play-pause, #prev-track, #next-track');
-    if (isButton) {
-        return;
-    }
-    
-    didDrag = false;
     isDragging = true;
     touchStartX = e.touches[0].clientX;
+    didDrag = false;
     e.preventDefault();
 });
 
@@ -114,7 +106,6 @@ document.addEventListener('touchmove', (e) => {
     const deltaX = e.touches[0].clientX - touchStartX;
     
     if (Math.abs(deltaX) > dragThreshold) {
-        didDrag = true;
         const angleOrder = ['perspective', 'front', 'side', 'top'];
         const currentIndex = angleOrder.indexOf(currentAngle);
         
@@ -127,21 +118,22 @@ document.addEventListener('touchmove', (e) => {
         }
         
         touchStartX = e.touches[0].clientX;
+        didDrag = true;
     }
 });
 
-document.addEventListener('touchend', (e) => {
+document.addEventListener('touchend', () => {
     isDragging = false;
     dragOverlay.style.cursor = 'grab';
-    
-    if (didDrag) {
-        e.preventDefault();
-    }
+    setTimeout(() => {
+        didDrag = false;
+    }, 100);
 });
 
 dragOverlay.addEventListener('touchcancel', () => {
     isDragging = false;
     dragOverlay.style.cursor = 'grab';
+    didDrag = false;
 });
 
 // Audio player
