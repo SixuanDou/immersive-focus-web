@@ -46,6 +46,7 @@ body {
     z-index: 5;
     cursor: grab;
     background: transparent;
+    touch-action: pan-y pinch-zoom;
 }
 
 #drag-overlay:active {
@@ -265,7 +266,7 @@ body {
     /* Angle bar */
     .controls-area {
         position: fixed;
-        bottom: 6.5rem;
+        bottom: calc(env(safe-area-inset-bottom) + 7.8rem);
         left: 50%;
         transform: translateX(-50%);
         width: max-content;
@@ -289,7 +290,7 @@ body {
     /* Music bar */
     .music-player {
         position: fixed;
-        bottom: 3.5rem;
+        bottom: calc(env(safe-area-inset-bottom) + 3.2rem);
         left: 50%;
         transform: translateX(-50%);
         right: auto;
@@ -303,7 +304,7 @@ body {
     /* Footer */
     .footer {
         position: fixed;
-        bottom: 1rem;
+        bottom: calc(env(safe-area-inset-bottom) + 0.8rem);
         left: 50%;
         transform: translateX(-50%);
     }

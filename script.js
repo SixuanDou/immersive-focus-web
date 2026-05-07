@@ -68,11 +68,11 @@ document.addEventListener('mousemove', (e) => {
         const currentIndex = angleOrder.indexOf(currentAngle);
         
         if (deltaX > 0) {
-            const nextIndex = (currentIndex + 1) % angleOrder.length;
-            loadVideo(angleOrder[nextIndex]);
-        } else {
             const prevIndex = (currentIndex - 1 + angleOrder.length) % angleOrder.length;
             loadVideo(angleOrder[prevIndex]);
+        } else {
+            const nextIndex = (currentIndex + 1) % angleOrder.length;
+            loadVideo(angleOrder[nextIndex]);
         }
         
         startX = e.clientX;
@@ -110,11 +110,11 @@ document.addEventListener('touchmove', (e) => {
         const currentIndex = angleOrder.indexOf(currentAngle);
         
         if (deltaX > 0) {
-            const nextIndex = (currentIndex + 1) % angleOrder.length;
-            loadVideo(angleOrder[nextIndex]);
-        } else {
             const prevIndex = (currentIndex - 1 + angleOrder.length) % angleOrder.length;
             loadVideo(angleOrder[prevIndex]);
+        } else {
+            const nextIndex = (currentIndex + 1) % angleOrder.length;
+            loadVideo(angleOrder[nextIndex]);
         }
         
         touchStartX = e.touches[0].clientX;
